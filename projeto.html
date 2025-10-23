@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ONG - Care Vida</title>
+    <link rel="stylesheet" href="./css/projeto.css">
+    <link rel="icon" type="image/x-icon" href="./image/logo_Care_vida.png">
 </head>
 <body>
     <header>
+        <nav>
     
     <a href="./index.html"><img id= "logo-header" src="./image/logo_Care_vida.png" alt="logo ONG Care Vida" width="200" height="200"></a>
-        <nav>
-            <ul>
+        <button class="menu-toggle"  onclick="toggleMenu()">☰</button>
+
+            <ul id="navMenu">
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./projeto.html">Projetos</a></li>
                 <li><a href="./cadastro.html">Cadastro</a></li>
@@ -20,10 +24,16 @@
     </header>
     
     <main>
-         <section>
-            <h1>Nossos Projetos</h1>
+         <section class="hero hero-projeto">
+            <div class="container__home__slogan">
+                <h1>Projeto Care Vida</h1>
+                <p>Transformando Vidas Através do Cuidado e Solidariedade</p>
+            </div>
+        </section>
+        <section>
+            <h2>Nossos Projetos</h2>
             <img src="./image/Banner__Projeto.png" alt="imagemprojeto">
-               <div class="container__home__texto">
+               <div class="container__home_texto">
                 <p>Saúde, Solidariedade e Assistência Social</p>
             </div>
             <p>
@@ -58,7 +68,7 @@
             <p>
                 Plataforma online que oferece recursos educativos, teleconsultas e suporte emocional para pessoas em situação de vulnerabilidade. 
                 Através do "Cuidar Digital", disponibilizamos vídeos, artigos e webinars sobre saúde e bem-estar, além de possibilitar o acesso a profissionais de saúde via chat ou videochamada, ampliando o alcance dos nossos serviços.</p>
-            </section>
+        </section>
     </main>
 
 </body>

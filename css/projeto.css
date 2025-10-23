@@ -1,0 +1,30 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  font-family: var(--font-stack), var(--font-stack1);
+  font-size: var(--base-font-size);
+  color: var(--neutra4-color);
+  background-color: var(--neutra2-color);
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary1-color: #3CB371;
+  --primary2-color: #4BA3C7;
+  --secondary1-color: #A8E6CF;
+  --secondary2-color: #FFF59D;
+  --neutra1-color: #FFFFFF;
+  --neutra2-color: #F5F5F5;
+  --neutra3-color: #9E9E9E;
+  --neutra4-color: #333333;
+  --font-stack: 'Poppins', sans-serif;
+  --font-stack1: 'Open Sans', sans-serif;
+  --base-font-size: 16px;
+  --border-radius: 4px;
+}
