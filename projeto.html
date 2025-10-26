@@ -3,36 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONG - Care Vida</title>
+    <title>Projetos - ONG Care Vida</title>
     <link rel="stylesheet" href="./css/projeto.css">
     <link rel="icon" type="image/x-icon" href="./image/logo_Care_vida.png">
 </head>
 <body>
-    <header>
+     <header id="home">
         <nav>
-    
-    <a href="./index.html"><img id= "logo-header" src="./image/logo_Care_vida.png" alt="logo ONG Care Vida" width="200" height="200"></a>
-        <button class="menu-toggle"  onclick="toggleMenu()">☰</button>
-
+             <div class="container_home_logo">
+            <img src="./image/logo_Care_vida.png" alt="logo ONG Care Vida">
+            </div>
             <ul id="navMenu">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./projeto.html">Projetos</a></li>
-                <li><a href="./cadastro.html">Cadastro</a></li>
-                
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projeto.html">Projetos</a></li>
+                <li><a href="./cadastro.html" class="cadastro-form">Cadastro</a></li>
             </ul>
+            <button class="menu-toggle"  onclick="toggleMenu()">☰</button>
+        
+        
+        <div class="container_home_logo_title">
+                <h1>Projetos - Care Vida</h1>
+                <h3>Saúde, Bem-estar e Assistência Social</h3>
+        </div>
         </nav>
     </header>
     
     <main>
-         <section class="hero hero-projeto">
-            <div class="container__home__slogan">
-                <h1>Projeto Care Vida</h1>
-                <p>Transformando Vidas Através do Cuidado e Solidariedade</p>
-            </div>
-        </section>
-        <section>
+    
+        <section class="banner__projeto">
             <h2>Nossos Projetos</h2>
-            <img src="./image/Banner__Projeto.png" alt="imagemprojeto">
                <div class="container__home_texto">
                 <p>Saúde, Solidariedade e Assistência Social</p>
             </div>
@@ -44,32 +43,42 @@
             </p>
         </section>
 
-        <section>
+        <section class="container_cards_saude">
             <h2>Saúde em Movimento</h2>
-            <img src="./image/Unidade_Móvel_saúde.png" alt="Veículo, adaptado como consultório móvel de saúde, está equipado com tendas onde profissionais de saúde, atendem e orientam moradores locais.">
             <p>
                 O projeto "Saúde em Movimento" leva atendimento médico e outras especialidades de forma gratuita para comunidades de difícil acesso por meio de uma unidade móvel equipada com consultórios. 
                 Profissionais voluntários oferecem consultas, exames básicos e orientações de saúde, promovendo o acesso a cuidados essenciais para populações que enfrentam barreiras geográficas e socioeconômicas.
             </p>
+             <div class="card1">
+                <img src="./image/Unidade_Móvel_saúde.png" alt="Imagem ilustrativa de uma unidade móvel de saúde, com profissionais atendendo pacientes em um consultório adaptado.">
+            </div>
         </section>
 
-        <section>
-            <h2>Bem Viver</h2>
-            <img src="./image/Projeto_Nutrição.png" alt="Grupo de pessoas sentadas em círculo, participando de uma oficina de educação em saúde.">
+        <section class="container_cards_oficinas">
+           <h2>Bem Viver</h2>
             <p>
                 Oficinas de saúde mental, relaxamento e apoio psicológico gratuito.Nossas oficinas são realizadas regularmente em centros comunitários e escolas, abordando temas como higiene pessoal, nutrição, prevenção de doenças e saúde mental. 
                 Utilizamos metodologias interativas para engajar os participantes, promovendo a conscientização e capacitação para o autocuidado e a promoção da saúde no dia a dia.
             </p>
+             <div class="card2">
+                <img src="./image/Projeto_Nutrição.png" alt="Imagem ilustrativa de uma oficina comunitária, com pessoas participando de atividades de saúde e bem-estar.">
+            </div>
         </section>
 
-        <section>
+        <section class="card3_container">
             <h2>Cuidar Digital</h2>
-            <img src="./image/Plataforma.png" alt="Imagem ilustrativa de uma plataforma digital de saúde, com ícones de vídeos, artigos e teleconsultas.">
-            <p>
+             <p>
                 Plataforma online que oferece recursos educativos, teleconsultas e suporte emocional para pessoas em situação de vulnerabilidade. 
                 Através do "Cuidar Digital", disponibilizamos vídeos, artigos e webinars sobre saúde e bem-estar, além de possibilitar o acesso a profissionais de saúde via chat ou videochamada, ampliando o alcance dos nossos serviços.</p>
+                <div class="card3">
+                    <img src="./image/Plataforma-removebg-preview.png" alt="Imagem ilustrativa de uma plataforma digital de saúde, com ícones de vídeos, artigos e teleconsultas.">
+                </div>
         </section>
+       
     </main>
+    <footer>
+        <p>&copy;2025 Todos os direitos reservados - Desenvolvido por Priscila C Machado</p>
+    </footer>
 
 </body>
 </html>

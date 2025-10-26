@@ -6,22 +6,29 @@
     <title>ONG - Care Vida</title>
     <link rel="stylesheet" href="./css/style.css"> 
     <link rel="icon" type="image/x-icon" href="./image/logo_Care_vida.png">
+</head>
 <body>
-    <header>
-        <div class="logo-header">
-        <a href="./index.html"><img id="logo-header" src="./image/logo_Care_vida.png" alt="logo ONG Care Vida" width="200" height="200"></a>
-        <h1>ONG - Care Vida</h1>
-        <h3>Bem-vindo à nosso site!</h3>
+    <header id="home">
+         <div class="container__home__logo">
+            <img src="./image/logo_Care_vida.png" alt="logo ONG Care Vida">
+        </div>
+
         <nav>
             <ul id="navMenu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="projeto.html">Projeto</a></li>
-                <li><a href="cadastro.html" class="active">Cadastro </a></li>
+                <li><a href="projeto.html">Projetos</a></li>
+                <li><a href="./cadastro.html" class="">Cadastro</a></li>
             </ul>
+            <button class="menu-toggle"  onclick="toggleMenu()">☰</button>
         </nav>
+        
+        <div class="container_home_logo_title">
+                <h1>ONG - Care Vida</h1>
+                <h3>Bem-vindo à nosso site!</h3>
+        </div>
     </header>
     <main>
-        <section>
+        <section class="container_home_texto">
             <h2> Quem Somos</h2>
             <p>A Care Vida é uma organização sem fins lucrativos dedicada à promoção da saúde, bem-estar e qualidade de vida em comunidades 
                 em situação de vulnerabilidade. Por meio de ações preventivas, campanhas educativas e 
@@ -69,7 +76,7 @@
         </section>
     </main>
     <footer>
-        <p>© 2025 ONG Care Vida. Todos os direitos reservados.</p>
+        <p>© 2025 Todos os direitos reservados - Desenvolvido por Priscila C Machado</p>
     </footer>
     
 </body>
