@@ -9,17 +9,20 @@
 </head>
 <body>
     <header id="home">
+        <nav>
          <div class="container__home__logo">
             <img src="./image/logo_Care_vida.png" alt="logo ONG Care Vida">
         </div>
 
-        <nav>
-            <ul id="navMenu">
+         <li class="dropdown">
+        <button class="dropdown-btn" onclick="toggleMenu()">☰</button>
+            <ul class="navMenu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projeto.html">Projetos</a></li>
                 <li><a href="./cadastro.html" class="">Cadastro</a></li>
             </ul>
-            <button class="menu-toggle"  onclick="toggleMenu()">☰</button>
+         </li>
+       
         </nav>
         
         <div class="container_home_logo_title">
