@@ -5,7 +5,7 @@ function toggleMenu() {
 }
 
 function sectionScroll(sectionId) {
-    // ... (Mantida a lógica original)
+    
     const section = document.getElementById(sectionId);
     
     if (!section) return;
@@ -19,7 +19,6 @@ function sectionScroll(sectionId) {
     menu.classList.remove('show');
 }
 
-// 🎯 NOVO/CORRIGIDO: Função dedicada para o Dark/Light Theme
 function handleThemeToggle() {
     const body = document.body;
     const toggleBtn = document.getElementById("themeToggle");
@@ -36,7 +35,6 @@ function setupThemeToggle() {
 
     if (!toggleBtn) return; 
 
-    // 1. Aplica o tema salvo (para ser chamado no início e após SPA)
     if (localStorage.getItem("theme") === "dark") {
         body.classList.add("dark-theme");
         toggleBtn.textContent = "☀️";
@@ -45,7 +43,7 @@ function setupThemeToggle() {
         toggleBtn.textContent = "🌙";
     }
 
-    // 2. Anexa o evento de clique (garantindo que não seja duplicado)
+    
     toggleBtn.removeEventListener("click", handleThemeToggle); 
     toggleBtn.addEventListener("click", handleThemeToggle);
 }
