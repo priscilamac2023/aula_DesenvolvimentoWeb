@@ -64,13 +64,14 @@ header {
 nav {
   
   list-style: none;
-  width: 100%;
-  top: 0;
+   max-width: 100%;
+  margin: 0 auto;
   z-index: 1000;
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
+  padding: 0 2rem;
   
 }
 
@@ -80,7 +81,6 @@ nav {
   justify-content: center;
   flex-wrap: wrap;
   color: var(--neutra1-color);
-  font-size: 1.5rem;
   text-decoration: none;
   list-style: none;
   font-weight: 500;
@@ -91,7 +91,7 @@ nav {
 
 #navMenu li a {
   color: var(--neutra1-color);
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -116,7 +116,7 @@ nav {
 
 
 button {
-  background-color: var(--primary1-color);
+  
   color: var(--neutra1-color);
   border: none;
   padding: 0.75rem 1.25rem;
@@ -124,6 +124,182 @@ button {
   font-weight: bold;
   transition: background-color 0.3s;
 }
+
+.btn.secondary { background: var(--primary2-color); }
+.btn.ghost {
+  background: transparent;
+  color: var(--primary1-color);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0,0,0,0.12); }
+.btn:active { transform: translateY(0); box-shadow: 0 3px 8px rgba(0,0,0,0.12); }
+.btn:focus-visible { outline: 3px solid rgba(60,179,113,0.25); outline-offset: 2px; }
+
+
+.btn.sm { padding: 0.4rem .7rem; font-size: .9rem; border-radius: 6px;}
+.btn.lg { padding: .9rem 1.4rem; font-size: 1.05rem; border-radius: 12px; }
+
+body.dark-theme {
+  --primary1-color: #2E8B57;
+  --primary2-color: #3E7CA6;
+  --cor-secundaria: #E76F51;
+  --neutra1-color: #1C1C1C;
+  --neutra2-color: #2A2A2A;
+  --neutra3-color: #CCCCCC;
+  --neutra4-color: #F5F5F5;
+  --bg-body: #121212;
+  --bg-card: #1E1E1E;
+  --text-color: #F5F5F5;
+}
+
+/* Aplicando variáveis globais */
+body {
+  background-color: var(--bg-body);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+section, main, .cadastro-section {
+  background-color: var(--bg-card);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Botão do tema */
+.theme-toggle {
+  background: var(--primary1-color);
+  width: 45px;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--primary2-color);
+  
+}
+
+.alert {
+  padding: .8rem 1rem;
+  border-radius: 8px;
+  margin: .6rem 0;
+  display: flex;
+  gap: .75rem;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  color: var(--neutral-0);
+  font-weight: 600;
+}
+.alert.info { background: var(--primary2-color); }
+.alert.success { background: var(--primary1-color); }
+.alert.warn { background: #E6A23C; /* amber */ }
+.alert.error { background: #E76F51; }
+
+.alert small { font-weight: 400; opacity: .95; }
+
+.toast-wrap {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  z-index: 1200;
+  pointer-events: none;
+}
+.toast {
+  pointer-events: auto;
+  min-width: 220px;
+  max-width: 320px;
+  padding: .7rem 1rem;
+  border-radius: 10px;
+  color: var(--neutral-0);
+  box-shadow: var(--shadow-sm);
+  transform-origin: right bottom;
+  animation: toast-in .18s ease;
+}
+.toast.info { background: var(--primary2-color); }
+.toast.success { background: var(--primary1-color); }
+.toast.warn { background: #E6A23C; color: #111; }
+.toast.error { background: #E76F51; }
+
+/* show/hide animation */
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(8px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------------- Modal (acessível) ---------------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1300;
+  padding: 1.2rem;
+}
+.modal-backdrop.show { display: flex; }
+
+.modal {
+  width: 100%;
+  max-width: 720px;
+  background: var(--neutral-0);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.35);
+  padding: 1rem 1.25rem;
+  position: relative;
+}
+.modal header { display:flex; justify-content:space-between; align-items:center; gap:.6rem; }
+.modal h3 { margin:0; }
+.modal .modal-body { margin-top:.8rem; max-height:60vh; overflow:auto; }
+.modal .modal-footer { display:flex; gap:.6rem; justify-content:flex-end; margin-top:1rem; }
+
+.modal .close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.modal :focus { outline: 3px solid rgba(75,133,120,.18); outline-offset: 2px; }
+.badge {
+  display:inline-block;
+  min-width: 20px;
+  padding: .15rem .5rem;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.06);
+  color: var(--neutral-4);
+  font-weight: 700;
+  font-size: .85rem;
+  text-align:center;
+}
+
+/* typed badges */
+.badge.primary { background: var(--primary1-color); color: var(--neutral-0); }
+.badge.secondary { background: var(--primary2-color); color: var(--neutral-0); }
+.badge.warn { background: #E6A23C; color: #111; }
+.badge.error { background: #E76F51; color: #fff; }
+
+/* tags (category rectangles) */
+.tag {
+  display:inline-block;
+  padding: .25rem .6rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: .9rem;
+  background: rgba(0,0,0,.05);
+  color: var(--neutral-4);
+  margin-right:.4rem;
+}
+.tag.primary { background: rgba(60,179,113,.12); color: var(--primary1-color); }
+.tag.secondary { background: rgba(75,163,199,.12); color: var(--primary2-color); }
+.tag.pill { border-radius: 999px; }
+
 
 main {
 
@@ -142,7 +318,7 @@ main {
   display: block;
   align-items: center;
   margin: 2rem;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -155,10 +331,11 @@ main {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     font-weight: bold;
-    unicode-bidi: isolate;
+    
 }
 
 .cadastro-section form label {
+
   display: block;
   margin-bottom: 0.5rem;
   font-size: 1.3rem;
@@ -166,6 +343,8 @@ main {
 }
 
 .cadastro-section form input {
+
+  background-color: var(--neutra2-color);
   width: 100%;
   height: 50px;
   padding: 0.5rem;
@@ -243,6 +422,7 @@ footer span {
 }
 
 @media (min-width: 1200px) {
+
   main {
     max-width: 1400px;
   }
@@ -251,18 +431,69 @@ footer span {
     font-size: 2.6rem;
   }
 
+  .dropdown-btn{
+    display: none;
+  }
+
+  .botaoCadastrar {
+  width: 100%;
+  max-width: 400px; /* evita que o botão fique largo demais */
+  display: block;
+  margin: 2rem auto; /* centraliza no formulário */
+  background-color: var(--primary1-color);
+  color: var(--neutra1-color);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.botaoCadastrar:hover {
+  background-color: var(--cor-secundaria);
+}
   section {
     padding: 3rem;
   }
 }
 
 @media (max-width: 992px) {
-  
+
+  .dropdown-btn {
+    display: none;
+  }
+
+  .botaoCadastrar {
+  width: 100%;
+  max-width: 400px; /* evita que o botão fique largo demais */
+  display: block;
+  margin: 2rem auto; /* centraliza no formulário */
+  background-color: var(--primary1-color);
+  color: var(--neutra1-color);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.botaoCadastrar:hover {
+  background-color: var(--cor-secundaria);
+}
   h1 {
     font-size: 2rem;
   }
 
   #navMenu {
+    
     gap: 1.5rem;
   }
 
@@ -272,30 +503,81 @@ footer span {
 }
 
 @media (max-width: 768px) {
-  header {
-    padding: 1rem;
-  }
-
-  h1 {
-    font-size: 1.8rem;
-  }
-
-  h3 {
-    font-size: 1rem;
-  }
-
-  #navMenu {
-    gap: 1rem;
-  }
-
-  section {
-    padding: 1.5rem;
-  }
-
-  section h2 {
-    font-size: 1.5rem;
-  }
+  
+header {
+  padding: 1rem;
 }
+
+.botaoCadastrar {
+  width: 100%;
+  max-width: 400px; /* evita que o botão fique largo demais */
+  display: block;
+  margin: 2rem auto; /* centraliza no formulário */
+  background-color: var(--primary1-color);
+  color: var(--neutra1-color);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.botaoCadastrar:hover {
+  background-color: var(--cor-secundaria);
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+nav {
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  justify-content: space-around;
+}
+
+#navMenu.show {
+  display: flex;
+   
+}
+
+#navMenu li a {
+  font-size: 1.2rem;
+  color: var(--cor-neutra-clara);
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-btn {
+  display: block;
+  background: none;
+  border: none;
+  color: var(--cor-neutra-clara);
+  font-size: 2rem;
+  cursor: pointer;
+}
+  
+#navMenu {
+  display: none ;
+}
+
+section {
+  padding: 1.5rem;
+}
+
+section h2 {
+  font-size: 1.5rem;
+}
+}
+
 
 @media (max-width: 600px) {
   #navMenu {
@@ -303,11 +585,11 @@ footer span {
     
   }
 
-  .menu-toggle {
-    display: block;
+  #navMenu.show {
+    display: flex;
   }
 
-   .dropdown-btn {
+.dropdown-btn {
     display: block;
     background: none;
     border: none;
@@ -316,51 +598,96 @@ footer span {
     cursor: pointer;
   }
 
-   section {
+  .botaoCadastrar {
+  width: 100%;
+  max-width: 400px; /* evita que o botão fique largo demais */
+  display: block;
+  margin: 2rem auto; /* centraliza no formulário */
+  background-color: var(--primary1-color);
+  color: var(--neutra1-color);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.botaoCadastrar:hover {
+  background-color: var(--cor-secundaria);
+}
+section {
     margin: 1rem 0;
     padding: 1.2rem;
   }
-}
+
 
 @media (max-width: 480px) {
-  #navMenu {
+
+  .modal { padding: .8rem; max-width: 92%; }
+  .btn { width: 100%; display:block; }
+  .btn.sm { width: auto; display: inline-block; }
+  .toast { max-width: 92vw; }
+  .badge { font-size: .8rem; padding: .12rem .45rem; }
+}
+#navMenu {
     display: none;
     
-  }
+}
 
-  .menu-toggle {
-    display: block;
-  }
+#navMenu.show {
+    display: flex;
+}
 
-  .cadastro-section form button {
+.dropdown-btn {
+    display: flex;
+    background: none;
+    border: none;
+    color: var(--cor-neutra-clara);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.cadastro-section form button {
     font-size: 1rem;
-  }
+}
 
-  .dropdown-btn {
+.dropdown-btn {
       display: block;
       background: none;
       border: none;
       color: var(--cor-neutra-clara);
       font-size: 2rem;
       cursor: pointer;
-    }
+}
 
-  select#interesses {
+.botaoCadastrar {
+    max-width: 100%;
+    font-size: 1.2rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+}
+
+select#interesses {
     font-size: 1rem;
 }
 
 .cadastro-section form input {
     font-size: 1rem;
-  }
-  .cadastro-section form label {
-    font-size: 1rem;
-  }
-.cadastro-section h1 {
-    font-size: 1.5rem;
-  }
-
-  footer span{
-    font-size: 0.5rem;
-  }
 }
 
+.cadastro-section form label {
+    font-size: 1rem;
+}
+.cadastro-section h1 {
+    font-size: 1.5rem;
+}
+
+footer span{
+    font-size: 0.5rem;
+
+}
+}

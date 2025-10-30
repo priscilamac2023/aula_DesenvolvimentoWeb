@@ -11,11 +11,16 @@
     <header>
       
         <nav>
+            <button class="btn theme-toggle" id="themeToggle" aria-label="Alternar modo claro/escuro">🌙</button>
+            <div class="logo">
+                <a href="index.html"><img src="./image/logo_Care_vida.png" alt="Logo da ONG Care Vida, representando cuidado e apoio à comunidade."></a>
+            </div>
+
             <button class="dropdown-btn" onclick="toggleMenu()">☰</button>
             <ul class="navMenu" id="navMenu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projeto.html">Projetos</a></li>
-                <li><a href="./cadastro.html">Cadastro</a></li>
+                <li><a href="./cadastro.html" class="active">Cadastro</a></li>
             </ul>
         </nav>
 
@@ -68,6 +73,10 @@
     <footer>
         <p>&copy;2025 Todos os direitos reservados - Desenvolvido por Priscila C Machado</p>
     </footer>
+
+    <script src="./script/script.js"></script>
+
+    
 
 </body>
 </html>

@@ -33,6 +33,64 @@ body {
   line-height: 1.7;
 }
 
+body.dark-theme {
+ -cor-primaria: #3CB371;
+  --cor-primaria-escura: #256B47;
+  --cor-primaria-clara: #9FE3C2;
+
+  /* Cores secundárias */
+  --cor-secundaria: #E76F51;
+  --cor-secundaria-escura: #D95A3D;
+  --cor-secundaria-clara: #FFBCA2;
+
+  /* Neutras invertidas */
+  --cor-neutra-clara: #121212; /* Fundo principal */
+  --cor-neutra-media: #1E1E1E; /* Cards e seções */
+  --cor-neutra-escura: #F5F5F5; /* Texto claro */
+
+  /* Fundos e textos gerais */
+  --bg-body: var(--cor-neutra-clara);
+  --bg-card: var(--cor-neutra-media);
+  --text-color: var(--cor-neutra-escura);
+}
+
+/* Aplicação prática (mantém transições suaves) */
+body {
+  background-color: var(--bg-body);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+section, main {
+  background-color: var(--bg-card);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header, footer {
+  background-color: var(--cor-primaria-escura);
+  color: var(--cor-neutra-escura);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#navMenu li a {
+  color: var(--cor-neutra-escura);
+}
+
+#navMenu li a:hover,
+#navMenu li a.active {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-neutra-clara);
+}
+
+
+section, main, .cadastro-section {
+  background-color: var(--bg-card);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
 header {
   background-color: var(--cor-primaria-escura);
   color: var(--cor-neutra-clara);
@@ -62,6 +120,24 @@ header {
 .container__home__logo_title {
   text-align: center;
   margin-top: 0.5rem;
+}
+
+.theme-toggle {
+  background: var(--cor-secundaria);
+  color: #fff;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--cor-secundaria-escura);
+  transform: rotate(15deg);
 }
 
 h1 {
