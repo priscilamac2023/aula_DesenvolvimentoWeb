@@ -1,11 +1,11 @@
 
-
 function toggleMenu() {
     const navMenu = document.getElementById('navMenu');
     navMenu.classList.toggle('show');
 }
 
 function sectionScroll(sectionId) {
+    // ... (Mantida a lógica original)
     const section = document.getElementById(sectionId);
     
     if (!section) return;
@@ -18,26 +18,38 @@ function sectionScroll(sectionId) {
     const menu = document.getElementById('navMenu');
     menu.classList.remove('show');
 }
+
+// 🎯 NOVO/CORRIGIDO: Função dedicada para o Dark/Light Theme
+function handleThemeToggle() {
+    const body = document.body;
+    const toggleBtn = document.getElementById("themeToggle");
+    
+    body.classList.toggle("dark-theme");
+    const isDark = body.classList.contains("dark-theme");
+    toggleBtn.textContent = isDark ? "☀️" : "🌙";
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+}
+
 function setupThemeToggle() {
     const toggleBtn = document.getElementById("themeToggle");
     const body = document.body;
 
     if (!toggleBtn) return; 
 
-    // 1. Verifica se o usuário já tem preferência salva (ou se é 'dark' por padrão)
+    // 1. Aplica o tema salvo (para ser chamado no início e após SPA)
     if (localStorage.getItem("theme") === "dark") {
         body.classList.add("dark-theme");
         toggleBtn.textContent = "☀️";
     } else {
+        body.classList.remove("dark-theme");
         toggleBtn.textContent = "🌙";
     }
-    toggleBtn.addEventListener("click", () => {
-        body.classList.toggle("dark-theme");
-        const isDark = body.classList.contains("dark-theme");
-        toggleBtn.textContent = isDark ? "☀️" : "🌙";
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-    });
+
+    // 2. Anexa o evento de clique (garantindo que não seja duplicado)
+    toggleBtn.removeEventListener("click", handleThemeToggle); 
+    toggleBtn.addEventListener("click", handleThemeToggle);
 }
+
 
 function isCpfLengthValid(cpf) {
   
@@ -216,13 +228,14 @@ function attachFormListeners() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-
     const menuToggleBtn = document.querySelector('.dropdown-btn');
     if (menuToggleBtn) {
         menuToggleBtn.addEventListener('click', toggleMenu);
     }
 
     attachFormListeners();
+
     
-    
-});
+    setupThemeToggle();
+})
+
