@@ -105,16 +105,6 @@ nav {
   color: var(--neutra1-color);
 }
 
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--cor-neutra-clara);
-  font-size: 2rem;
-  cursor: pointer;
-}
-
-
 button {
   
   color: var(--neutra1-color);
@@ -492,11 +482,45 @@ footer span {
     font-size: 2rem;
   }
 
-  #navMenu {
-    
-    gap: 1.5rem;
-  }
+#navMenu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  transition: all 0.3s ease;
+}
 
+#navMenu li a {
+  color: var(--neutra1-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--neutra1-color);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.dropdown-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--neutra1-color);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.dropdown-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--neutra1-color);
+  font-size: 2rem;
+  cursor: pointer;
+}
   section h2 {
     font-size: 1.6rem;
   }
@@ -537,37 +561,35 @@ h1 {
 h3 {
   font-size: 1rem;
 }
-nav {
-  flex-direction: row;
-  align-items: center;
-  padding: 1rem;
-  justify-content: space-around;
-}
 
-#navMenu.show {
-  display: flex;
-   
-}
-
-#navMenu li a {
-  font-size: 1.2rem;
-  color: var(--cor-neutra-clara);
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-btn {
-  display: block;
-  background: none;
-  border: none;
-  color: var(--cor-neutra-clara);
-  font-size: 2rem;
-  cursor: pointer;
-}
-  
 #navMenu {
-  display: none ;
-}
+    display: none;
+    flex-direction: column;
+    background-color: var(--primary3-color);
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    padding: 1rem 0;
+    text-align: center;
+  }
+
+  #navMenu.show {
+    display: flex;
+  }
+
+  .dropdown-btn {
+    display: block;
+  }
+
+  #navMenu li a {
+    display: block;
+    padding: 1rem;
+  }
+
+  .dropdown-btn {
+    display: block;
+  }
 
 section {
   padding: 1.5rem;
@@ -580,15 +602,7 @@ section h2 {
 
 
 @media (max-width: 600px) {
-  #navMenu {
-    display: none;
-    
-  }
-
-  #navMenu.show {
-    display: flex;
-  }
-
+ 
 .dropdown-btn {
     display: block;
     background: none;
@@ -598,11 +612,11 @@ section h2 {
     cursor: pointer;
   }
 
-  .botaoCadastrar {
+.botaoCadastrar {
   width: 100%;
-  max-width: 400px; /* evita que o botão fique largo demais */
+  max-width: 400px;
   display: block;
-  margin: 2rem auto; /* centraliza no formulário */
+  margin: 2rem auto; 
   background-color: var(--primary1-color);
   color: var(--neutra1-color);
   border: none;
@@ -632,14 +646,6 @@ section {
   .btn.sm { width: auto; display: inline-block; }
   .toast { max-width: 92vw; }
   .badge { font-size: .8rem; padding: .12rem .45rem; }
-}
-#navMenu {
-    display: none;
-    
-}
-
-#navMenu.show {
-    display: flex;
 }
 
 .dropdown-btn {
