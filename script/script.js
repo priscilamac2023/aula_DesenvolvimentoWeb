@@ -193,6 +193,7 @@ async function loadPage(pageName) {
 }
 
 function setupSpaNavigation() {
+ 
     document.body.addEventListener('click', (event) => {
     const link = event.target.closest('a');
         
@@ -207,6 +208,7 @@ function setupSpaNavigation() {
                 
                 loadPage(pageName);
             }
+               window.addEventListener('popstate' )
         }
     });
     
@@ -225,7 +227,7 @@ function attachFormListeners() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', ()=> {
     const menuToggleBtn = document.querySelector('.dropdown-btn');
     if (menuToggleBtn) {
         menuToggleBtn.addEventListener('click', toggleMenu);
@@ -237,3 +239,10 @@ document.addEventListener('DOMContentLoaded', () => {
     setupThemeToggle();
 })
 
+window.addEventListener('popstate', () => {
+    const path = window.location.pathname.split('/').pop();
+    const pageName = path.replace('.html', '') || 'index';
+  
+    
+     loadPage(pageName)
+});
