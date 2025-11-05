@@ -4,6 +4,11 @@ function toggleMenu() {
     navMenu.classList.toggle('show');
 }
 
+function closeMenu() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.remove('show');
+}
+
 function sectionScroll(sectionId) {
     
     const section = document.getElementById(sectionId);
@@ -15,8 +20,16 @@ function sectionScroll(sectionId) {
 
     window.scrollTo({top: sectionPosition, behavior:"smooth"});
 
-    const menu = document.getElementById('navMenu');
-    menu.classList.remove('show');
+    closeMenu();
+}
+
+function handleMenuLinkClick(event) {
+
+    const link = event.target.closest('a'); 
+    
+    if (link) { 
+        closeMenu(); 
+    }
 }
 
 function handleThemeToggle() {
@@ -48,12 +61,48 @@ function setupThemeToggle() {
     toggleBtn.addEventListener("click", handleThemeToggle);
 }
 
+function clearAddressForm(form) {
+    if (form.endereco) form.endereco.value = "";
+    if (form.estado) form.estado.value = "";
+}
+
+async function searchCep(event) {
+    const form = event.target.form; 
+    const cepInput = form.cep;
+    
+    let cep = cepInput.value.replace(/\D/g, '');
+
+    if (cep.length !== 9) {
+        clearAddressForm(form);
+        return;
+    }
+
+    const url = `https://viacep.com.br/ws/${cep}/json/`;
+    clearAddressForm(form);
+    
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.erro) {
+            alert("CEP não encontrado.");
+            cepInput.focus();
+        } else {
+            form.endereco.value = `${data.logradouro || ''}, ${data.bairro || ''}`;
+            form.estado.value = data.uf || '';
+            form.endereco.focus(); 
+        }
+    } catch (error) {
+        console.error("Erro ao buscar o CEP:", error);
+    }
+}
+
 
 function isCpfLengthValid(cpf) {
   
     cpf = cpf.replace(/[^\d]/g, ""); 
   
-     if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
+     if (cpf.length !== 14 || /^(\d)\1+$/.test(cpf)) {
     return false;
   }
    
@@ -87,7 +136,7 @@ function isAgeValid(form) {
 function validateForm(form) {
     const cpfInput = form.cpf;
     if (!isCpfLengthValid(cpfInput.value)) {
-        alert("Erro: O número do CPF é inválido (deve conter 11 dígitos). Verifique o preenchimento.");
+        alert("Erro: O número do CPF é inválido (deve conter 14 dígitos). Verifique o preenchimento.");
         cpfInput.focus();
         return false;
     }
@@ -208,7 +257,7 @@ function setupSpaNavigation() {
                 
                 loadPage(pageName);
             }
-               window.addEventListener('popstate' )
+            
         }
     });
     
@@ -216,33 +265,50 @@ function setupSpaNavigation() {
     window.addEventListener('popstate', () => {
          const path = window.location.pathname.split('/').pop();
          const pageName = path.replace('.html', '') || 'index';
-    
+        loadPage(pageName);
     });
 }
 
 function attachFormListeners() {
-    const cadastroForm = document.getElementById('cadastro');
-    if (cadastroForm) {
-        cadastroForm.addEventListener('submit', handleSubmit);
-    }
-}
+    setupThemeToggle();
 
-document.addEventListener('DOMContentLoaded', ()=> {
     const menuToggleBtn = document.querySelector('.dropdown-btn');
     if (menuToggleBtn) {
+
+        
+        menuToggleBtn.removeEventListener('click', toggleMenu);
         menuToggleBtn.addEventListener('click', toggleMenu);
+        
     }
 
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) {
+        navMenu.removeEventListener('click', handleMenuLinkClick);
+        navMenu.addEventListener('click', handleMenuLinkClick);
+    }
+
+    const cadastroForm = document.getElementById('cadastro');
+    if (cadastroForm) {
+        cadastroForm.removeEventListener('submit', handleSubmit);
+        cadastroForm.addEventListener('submit', handleSubmit);
+    }
+
+    const cepInput = document.getElementById('cep');
+        if (cepInput) {
+            cepInput.removeEventListener('blur', searchCep);
+            cepInput.addEventListener('blur', searchCep);
+        }
+    }
+
+document.addEventListener('DOMContentLoaded', ()=> {
+ setupSpaNavigation(); 
+    
     attachFormListeners();
-
     
-    setupThemeToggle();
-})
-
-window.addEventListener('popstate', () => {
-    const path = window.location.pathname.split('/').pop();
-    const pageName = path.replace('.html', '') || 'index';
-  
+    const initialPath = window.location.pathname;
+    const initialPage = initialPath.split('/').pop().replace('.html', '') || 'index';
     
-     loadPage(pageName)
+    if (initialPage !== 'index' && initialPage !== '') {
+        loadPage(initialPage);
+    }
 });
