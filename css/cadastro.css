@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@400;600&display=swap');
+
 
 
 
@@ -564,7 +564,7 @@ h3 {
 }
 
 #navMenu {
-    display: none;
+    display: flex;
     flex-direction: column;
     background-color: var(--primary3-color);
     width: 100%;
@@ -586,10 +586,6 @@ h3 {
   #navMenu li a {
     display: block;
     padding: 1rem;
-  }
-
-  .dropdown-btn {
-    display: block;
   }
 
 section {
