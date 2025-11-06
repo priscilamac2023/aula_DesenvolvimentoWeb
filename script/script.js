@@ -286,6 +286,7 @@ function attachFormListeners() {
         navMenu.removeEventListener('click', handleMenuLinkClick);
         navMenu.addEventListener('click', handleMenuLinkClick);
     }
+    
 
     const cadastroForm = document.getElementById('cadastro');
     if (cadastroForm) {
